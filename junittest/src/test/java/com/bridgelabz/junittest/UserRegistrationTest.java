@@ -1,5 +1,6 @@
 package com.bridgelabz.junittest;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,61 +14,71 @@ public class UserRegistrationTest {
 
 	@AfterEach
 	public void afterDisplay() {
-		System.out.println("End");
+		System.out.println("Passed Test Case");
+	}
+	@AfterAll
+	static void displayEnd() {
+		System.out.println("----END-----");
 	}
 	@Test
-	void given_email_id_should_returnTrue1() {
+	public void given_first_name_should_returnTrue() {
 		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkEmailId("abc@yahoo.com,");
-		Assertions.assertEquals(result, true);
+		Boolean result = user.checkFirstName("Preeti");
+		Assertions.assertEquals(result,true);
 	}
 	@Test
-	void given_email_id_should_returnTrue2() {
+	public void given_first_name_should_returnFalse() {
 		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkEmailId("abc-100@yahoo.com");
-		Assertions.assertEquals(result, true);
-	}
-	@Test
-	void given_email_id_should_returnTrue3() {
-		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkEmailId("abc.100@yahoo.com");
-		Assertions.assertEquals(result, true);
-	}
-	@Test
-	void given_email_id_should_returnTrue4() {
-		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkEmailId("abc111@abc.com");
-		Assertions.assertEquals(result, true);
-	}
-	@Test
-	void given_email_id_should_returnTrue5() {
-		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkEmailId("abc-100@abc.net");
-		Assertions.assertEquals(result, true);
-	}
-	@Test
-	void given_email_id_should_returnTrue6() {
-		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkEmailId("abc.100@abc.com.au");
-		Assertions.assertEquals(result, true);
-	}
-	@Test
-	void given_email_id_should_returnTrue7() {
-		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkEmailId("abc@1.com,");
-		Assertions.assertEquals(result, true);
-	}
-	@Test
-	void given_email_id_should_returnTrue8() {
-		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkEmailId("abc@gmail.com.com");
-		Assertions.assertEquals(result, true);
-	}
-	@Test
-	void given_email_id_should_returnTrue9() {
-		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkEmailId("abc+100@gmail.com");
-		Assertions.assertEquals(result, true);
+		Boolean result = user.checkFirstName("preeti");
+		Assertions.assertEquals(result,false);
 	}
 	
+	@Test
+	public void given_last_name_should_returnTrue() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkLastName("Ghatage");
+		Assertions.assertEquals(result,true);
+	}
+	@Test
+	public void given_last_name_should_returnFalse() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkLastName("gha");
+		Assertions.assertEquals(result,false);
+	}
+	@Test
+	public void given_email_id_should_returnTrue() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkEmailId("pree12@gmail.com");
+		Assertions.assertEquals(result,true);	
+	}
+	@Test
+	public void given_email_id_should_returnFalse() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkEmailId("pree.mail.gmail.com");
+		Assertions.assertEquals(result,false);	
+	}
+   @Test
+  public  void given_phone_number_should_returnTrue() {
+	   UserRegistration user = new UserRegistration();
+		Boolean result = user.checkPhoneNumber("91 8553266354");
+		Assertions.assertEquals(result,true);	
+   }
+   @Test
+   public  void given_phone_number_should_returnFalse() {
+ 	   UserRegistration user = new UserRegistration();
+ 		Boolean result = user.checkPhoneNumber("8553266354");
+ 		Assertions.assertEquals(result,false);	
+    }
+	@Test
+	public void given_password_should_returnTrue() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.password("Srikrishna@34");
+		Assertions.assertEquals(result,true);		
+	}
+	@Test
+	public void given_password_should_returnFalse() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.password("sr34");
+		Assertions.assertEquals(result,false);		
+	}
 }
