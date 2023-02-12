@@ -1,43 +1,62 @@
 package com.bridgelabz.junittest;
+
 import java.util.function.BooleanSupplier;
 import java.util.regex.Pattern;
+
 public class UserRegistration {
+	public boolean validFirstName(String name) throws Exception {
+		// firstName or lastName starts with Cap and has minimum 3 characters
 
-	public static final String VALIDATE_FIRST_NAME = "^[A-Z]{1}[a-zA-Z]{2,}$";
-	public static final String VALIDATE_LAST_NAME = "^[A-Z]{1}[a-zA-Z]{2,}$";
-	public static final String VALIDATE_EMAIL_ID = "^[a-zA-z0-9][a-zA-z0-9_.]*@[a-zA-Z0-9]+([.][a-zA-z]+)+";
-	public static final String VALIDATE_PHONE_NUMBER= "^[9][1][ ][6-9]{1}[0-9]{9}$";
-	public static final String VALIDATE_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&*+=]).{8,}$";
-	
-	public Boolean checkFirstName(String firstName) {
+		Pattern fName = Pattern.compile("^[A-Z]+[a-zA-Z]{2,}[0-9]*$");
+		boolean isValid = fName.matcher(name).matches();
 
-		return (Pattern.matches(VALIDATE_FIRST_NAME, firstName));
+		if (isValid) {
+			return true;
+		} else {
+			throw new UserRegistrationException("Invalid first name " + name);
+		}
+
 	}
 
-	public Boolean checkLastName(String lastName) {
-
-		return (Pattern.matches(VALIDATE_LAST_NAME, lastName));
+	public boolean validLastName(String name) throws Exception {
+		// Validation for firstName or lastName is same
+		boolean isValid = validFirstName(name);
+		if (isValid) {
+			return true;
+		} else {
+			throw new UserRegistrationException("Invalid last name" + name);
+		}
 	}
 
-	public Boolean checkEmailId(String emailId) {
-
-		return (Pattern.matches(VALIDATE_EMAIL_ID, emailId));
-	}
-
-	public Boolean checkPhoneNumber(String phoneNumber) {
+	public boolean validEmailId(String email) throws Exception {
 		
-		return (Pattern.matches(VALIDATE_PHONE_NUMBER, phoneNumber));
+		Pattern pattern = Pattern.compile("^[a-z]*.[a-z]+@[a-z]+.[a-z]{2,3}(.[a-z]{2,})*$");
+		boolean isValid = pattern.matcher(email).matches();
+		if (isValid) {
+			return true;
+		} else {
+			throw new UserRegistrationException("Invalid email" + email);
+		}
 	}
 
-	public Boolean password(String password) {
-	
-		return  (Pattern.matches(VALIDATE_PASSWORD, password));
+	public boolean validPhoneNumber(String number) throws Exception {
+		Pattern pattern = Pattern.compile("^[9][1][ ][6-9][0-9]{9}$");
+		boolean isValid = pattern.matcher(number).matches();
+		if (isValid) {
+			return true;
+		} else {
+			throw new UserRegistrationException("Invalid phone number" + number);
+		}
 	}
 
-	public boolean validEmailId(String email) {
-		return true;
-	}	
-	public boolean invalidEmailId(String email) {
-		return false;
+	public boolean validPassword(String password) throws Exception {
+		// password all rules 1 to 4
+		Pattern pattern = Pattern.compile("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&+=])?.{8,}$");
+		boolean isValid = pattern.matcher(password).matches();
+		if (isValid) {
+			return true;
+		} else {
+			throw new UserRegistrationException("password is invalid " + password);
+		}
 	}
 }
