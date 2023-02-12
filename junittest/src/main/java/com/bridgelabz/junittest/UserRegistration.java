@@ -1,4 +1,5 @@
 package com.bridgelabz.junittest;
+import java.util.function.BooleanSupplier;
 import java.util.regex.Pattern;
 public class UserRegistration {
 
@@ -29,7 +30,14 @@ public class UserRegistration {
 	}
 
 	public Boolean password(String password) {
-		// TODO Auto-generated method stub
+	
 		return  (Pattern.matches(VALIDATE_PASSWORD, password));
+	}
+
+	public boolean validEmailId(String email) {
+		return true;
+	}	
+	public boolean invalidEmailId(String email) {
+		return false;
 	}
 }

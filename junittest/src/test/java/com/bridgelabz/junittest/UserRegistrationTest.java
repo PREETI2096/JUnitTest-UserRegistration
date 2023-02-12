@@ -5,7 +5,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
+@RunWith(Parameterized.class)
 public class UserRegistrationTest {
 	@BeforeAll
 	static void display() {
@@ -81,4 +85,16 @@ public class UserRegistrationTest {
 		Boolean result = user.password("sr34");
 		Assertions.assertEquals(result,false);		
 	}
+	  @Parameterized.Parameters
+	    @ValueSource(strings = {"Abc@yahoo.com","abc@gmail.com.com",})
+	    public void givenEmailWhenValidShouldReturnTrue(String email) {
+		  UserRegistration user = new UserRegistration();
+	        Assertions.assertTrue(user.validEmailId(email));
+	    }
+	  @Parameterized.Parameters
+	    @ValueSource(strings = {"abc","abc@.com.my","abc123@gmail.a","abc123@.com","abc@%*.com",})
+	    public void givenEmailWhenInValidShouldReturnFalse(String email) {
+		  UserRegistration user = new UserRegistration();
+	        Assertions.assertFalse(user.validEmailId(email));
+	    }
 }
