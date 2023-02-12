@@ -24,21 +24,30 @@ public class UserRegistrationTest {
 	}
 
 	@Test
-		void given_last_name_should_returnTrue() {
-			UserRegistration user = new UserRegistration();
-			Boolean result = user.checkLastName("Ghatage");
-			Assertions.assertEquals(result,true);
+	void given_last_name_should_returnTrue() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkLastName("Ghatage");
+		Assertions.assertEquals(result, true);
 	}
+
 	@Test
 	void given_email_id_should_returnTrue() {
 		UserRegistration user = new UserRegistration();
 		Boolean result = user.checkEmailId("pree12@gmail.com");
-		Assertions.assertEquals(result,true);	
+		Assertions.assertEquals(result, true);
 	}
-	  @Test
-	   void given_phone_number_should_returnTrue() {
-		   UserRegistration user = new UserRegistration();
-			Boolean result = user.checkPhoneNumber("91 8553266354");
-			Assertions.assertEquals(result,true);	
-	   }
+
+	@Test
+	void given_phone_number_should_returnTrue() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkPhoneNumber("91 8553266354");
+		Assertions.assertEquals(result, true);
+	}
+
+	@Test
+	void given_password_should_returnTrue() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.password("srikrishna");
+		Assertions.assertEquals(result, true);
+	}
 }
