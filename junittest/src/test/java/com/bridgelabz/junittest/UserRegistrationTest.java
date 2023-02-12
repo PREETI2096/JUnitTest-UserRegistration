@@ -15,39 +15,59 @@ public class UserRegistrationTest {
 	public void afterDisplay() {
 		System.out.println("End");
 	}
-
 	@Test
-	void given_first_name_should_returnTrue() {
+	void given_email_id_should_returnTrue1() {
 		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkFirstName("Preeti");
+		Boolean result = user.checkEmailId("abc@yahoo.com,");
 		Assertions.assertEquals(result, true);
 	}
-
 	@Test
-	void given_last_name_should_returnTrue() {
+	void given_email_id_should_returnTrue2() {
 		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkLastName("Ghatage");
+		Boolean result = user.checkEmailId("abc-100@yahoo.com");
 		Assertions.assertEquals(result, true);
 	}
-
 	@Test
-	void given_email_id_should_returnTrue() {
+	void given_email_id_should_returnTrue3() {
 		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkEmailId("pree12@gmail.com");
+		Boolean result = user.checkEmailId("abc.100@yahoo.com");
 		Assertions.assertEquals(result, true);
 	}
-
 	@Test
-	void given_phone_number_should_returnTrue() {
+	void given_email_id_should_returnTrue4() {
 		UserRegistration user = new UserRegistration();
-		Boolean result = user.checkPhoneNumber("91 8553266354");
+		Boolean result = user.checkEmailId("abc111@abc.com");
 		Assertions.assertEquals(result, true);
 	}
-
 	@Test
-	void given_password_should_returnTrue() {
+	void given_email_id_should_returnTrue5() {
 		UserRegistration user = new UserRegistration();
-		Boolean result = user.password("Srikrishna@67");
+		Boolean result = user.checkEmailId("abc-100@abc.net");
 		Assertions.assertEquals(result, true);
 	}
+	@Test
+	void given_email_id_should_returnTrue6() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkEmailId("abc.100@abc.com.au");
+		Assertions.assertEquals(result, true);
+	}
+	@Test
+	void given_email_id_should_returnTrue7() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkEmailId("abc@1.com,");
+		Assertions.assertEquals(result, true);
+	}
+	@Test
+	void given_email_id_should_returnTrue8() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkEmailId("abc@gmail.com.com");
+		Assertions.assertEquals(result, true);
+	}
+	@Test
+	void given_email_id_should_returnTrue9() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkEmailId("abc+100@gmail.com");
+		Assertions.assertEquals(result, true);
+	}
+	
 }
