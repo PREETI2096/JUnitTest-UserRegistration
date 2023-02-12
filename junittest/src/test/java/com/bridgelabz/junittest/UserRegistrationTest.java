@@ -10,15 +10,29 @@ public class UserRegistrationTest {
 	static void display() {
 		System.out.println("Welcome to User Registration Testing Program");
 	}
-		@AfterEach
-		public void afterDisplay() {
-			System.out.println("End");
-		}
-		
-		@Test
-		void given_first_name_should_returnTrue() {
+
+	@AfterEach
+	public void afterDisplay() {
+		System.out.println("End");
+	}
+
+	@Test
+	void given_first_name_should_returnTrue() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkFirstName("Preeti");
+		Assertions.assertEquals(result, true);
+	}
+
+	@Test
+		void given_last_name_should_returnTrue() {
 			UserRegistration user = new UserRegistration();
-			Boolean result = user.checkFirstName("Preeti");
+			Boolean result = user.checkLastName("Ghatage");
 			Assertions.assertEquals(result,true);
-		}
+	}
+	@Test
+	void given_email_id_should_returnTrue() {
+		UserRegistration user = new UserRegistration();
+		Boolean result = user.checkEmailId("pree12@gmail.com");
+		Assertions.assertEquals(result,true);	
+	}
 }
