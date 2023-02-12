@@ -6,6 +6,7 @@ public class UserRegistration {
 	public static final String VALIDATE_LAST_NAME = "^[A-Z]{1}[a-zA-Z]{2,}$";
 	public static final String VALIDATE_EMAIL_ID = "^[a-zA-z0-9][a-zA-z0-9_.]*@[a-zA-Z0-9]+([.][a-zA-z]+)+";
 	public static final String VALIDATE_PHONE_NUMBER= "^[9][1][ ][6-9]{1}[0-9]{9}$";
+	public static final String VALIDATE_PASSWORD = "^[a-z]{8,}$";
 	
 	public Boolean checkFirstName(String firstName) {
 
@@ -25,5 +26,10 @@ public class UserRegistration {
 	public Boolean checkPhoneNumber(String phoneNumber) {
 		
 		return (Pattern.matches(VALIDATE_PHONE_NUMBER, phoneNumber));
+	}
+
+	public Boolean password(String password) {
+		// TODO Auto-generated method stub
+		return  (Pattern.matches(VALIDATE_PASSWORD, password));
 	}
 }
